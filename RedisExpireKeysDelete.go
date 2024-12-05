@@ -117,7 +117,7 @@ func startDailyCleanup(rdb *redis.Client, filePath string, interval int) {
 
 	// 等待直到每天的 0 点
 	now := time.Now()
-	waitUntilMidnight := time.Until(time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute()+1, 0, 0, now.Location()))
+	waitUntilMidnight := time.Until(time.Date(now.Year(), now.Month(), now.Day()+1, 0, 0, 0, 0, now.Location()))
 	time.Sleep(waitUntilMidnight)
 
 	for {
